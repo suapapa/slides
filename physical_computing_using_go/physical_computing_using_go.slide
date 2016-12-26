@@ -1,0 +1,99 @@
+Physical computing using Go
+22 Dec 2016
+
+Homin Lee
+KossLab
+@suapapa
+
+* Conclution
+
+.link https://github.com/suapapa/go_devices
+
+별 눌러 주세요!
+
+
+* 의식의 흐름
+
+.image Physical_computing.svg _ 800
+
+- Physical computing is Fun!
+- Go rules!!
+- Go + Physical computing will be Awesome!!!
+
+
+* 마이크로컨트롤러에서 Go를 쓰고 싶음
+
+응 아니야
+
+.image another_mountine.jpg
+
+Go runtime is too big for micro cotrollers
+
+
+* 라즈베리파이(ARM)에서 Go를 쓰면 되겠네!
+
+Some IoT? frameworks already exists!
+
+.link https://gobot.io/
+.link http://embd.kidoman.io/
+
+난 왠지 별로...
+.image taste.jpg
+
+
+* A Proposal: Peripheral I/O for Go 
+
+.link http://go-talks.appspot.com/github.com/rakyll/talks/pio/pio.slide
+
+golang.org/x/ex/io/...
+
+- I2C, SPI 버스를 사용하기 위한 interface 제공
+- Linux devfs 를 기반으로 한 구현 제공
+
+
+* 예제
+
+github.com/goiot/devices/...
+
+- exp/io 저자들이 만든,
+- exp/io 패키지를 사용하여 작성한 HW모듈 패키지 예제들
+
+
+* 여기부터 자랑
+
+
+* 흠.. 뭔가 빠진 것 같은데
+
+GPIO 어디 갔음?
+요기잉네
+
+github.com/goiot/exp/...
+
+- 슬라이드에는 소개되지만 exp/io 에서는 빠진 gpio 패키지
+- 인터페이스만 있음
+
+
+* 없어서 만들어본 GPIO 구현
+
+.link https://godoc.org/github.com/suapapa/go_devices/rpi/gpio
+
+- RPI /dev/gpiomem 을 이용한 구현
+- sysfs 를 이용한 구현
+
+이거 말고도 계속 찍어 내고 있습니다
+예를들어...
+
+* github.com/suapapa/go_devices/sh1106 
+.image sh1106_gopher.jpg _ 640
+
+* githun.com/suapapa/go_devices/tm1638
+.image tm1638_go.png _ 640
+.link https://www.youtube.com/watch?v=yOShJJlKU6A
+
+
+* Conclution - Again!
+
+.link https://github.com/suapapa/go_devices
+
+별 눌러 주세요!
+현기증 난단 말이에요!!
