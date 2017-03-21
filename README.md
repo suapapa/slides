@@ -3,6 +3,7 @@
 * [Physical computing using Go](http://go-talks.appspot.com/github.com/suapapa/slides/physical_computing_using_go/physical_computing_using_go.slide)
 * [You can read Go code](http://go-talks.appspot.com/github.com/suapapa/slides/you_can_read_go_code/you_can_read_go_code.slide)
 * [Go character encoding](http://go-talks.appspot.com/github.com/suapapa/slides/go_character_encoding/go_character_encoding.slide)
+* [Arduino with Python](http://go-talks.appspot.com/github.com/suapapa/slides/arduino_with_python/arduino_with_python.slide)
 
 
 ## License ##

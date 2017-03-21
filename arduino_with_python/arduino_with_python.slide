@@ -1,0 +1,198 @@
+Harder way to Arduino
+with Python
+17 Mar 2013
+
+Homin Lee
+@suapapa
+
+###############################################################################
+
+* About me
+
+.image site_github_com_suapapa.png 400 655
+
+- 주로 C/C++을 쓰며 Python을 서브로 사용해 왔습니다.
+- 취미로 아두이노를 사용한 전자공작을 합니다.
+
+* Me about Arduino
+
+.image arduino_projects.png 400 533
+
+- 한글시계, HUMA, 점자프린터, etc... 
+- 손에잡히는 아두이노, 인사이트 역자
+
+* Will talk about...
+
+- Arduino
+- Python and pyserial
+- Scons
+- Arduino + scons = arscons
+
+
+###############################################################################
+
+* Arduino
+
+* arduino.cc
+
+.image site_arduino_cc.png 400 453
+
+Arduino is an open-source electronics prototyping platform based on flexible, easy-to-use hardware and software. It's intended for artists, designers, hobbyists, and anyone interested in creating interactive objects or environments.
+
+* Hello physical world!
+
+반짝 반짝 작은~ LED~
+
+.code blink.ino
+
+* What happed?
+
+- 스케치를 C++ 코드로 변환
+- 컴파일 avr-gcc
+- 업로드 avrdude
+
+# - ~/.arduino/preferences.txt (Linux)
+# - ~/Library/Arduino/preferences.txt (OSX)
+#
+#    build.verbose=true upload.verbose=true
+
+* Want more?
+
+.image screenshot_arduino_example.png 400 417
+
+File -> Examples
+
+###############################################################################
+* Serial
+
+* Serial monitor
+
+.image screenshot_arduino_serialmonitor.png 400 429
+
+포트와 속도를 설정하고 시리얼 모니터를 여세요.
+
+* pyserial
+
+.code read-serial.py
+
+###############################################################################
+* Scons
+
+* SConstruct
+
+make : Makefile = scons : SConstruct
+
+SConstruct:
+
+    Program("hello", "hello.cpp")
+
+Build:
+
+    $ scons
+
+Clean:
+
+    $ scons -c
+
+###############################################################################
+* arscons: Arduino + Scons
+
+* Why?
+
+- 커맨드라인에서 아두이노 스케치를 빌드할 방법 필요
+- 스케치 업로드 과정 수정 필요
+- 아무도 안 하네?
+
+* After years... what happened then?
+
+- 200여 줄 -> 400여 줄
+- Supprot Mac
+- Supprot Windows
+- Support Arduino v1.0
+- Support all? veriants 
+- v1.0 release
+
+* Hello arscons
+
+.link https://github.com/suapapa/arscons
+
+다운로드:
+
+    $ git clone https://github.com/suapapa/arscons
+    $ cd arscons
+    $ tree
+    .
+    ├── README.md
+    ├── SConstruct
+    └── arscons.ino
+
+빌드 & 업로드:
+
+    $ scons
+    $ scons upload
+
+* Use it for your project, awesome
+
+arscons를 clone 한 후 remote 를 변경:
+
+    $ git clone https://github.com/suapapa/arscons awesome
+    $ cd $_
+    $ git remote rename origin arscons
+
+아두이노 스케치는 폴더 이름과 같아야 합니다:
+
+    $ git mv arscons.ino awesome.ino
+    $ git commit -m "Initial commit of awesome"
+
+지금까지 문제가 없는지 확인:
+
+    $ scons && scons upload
+
+* Project awesome continue. add third-party library
+
+아두이노 라이브러리를 git submodule로 연결하면 편리합니다. 예;
+
+    $ git submodule add https://github.com/suapapa/arduino_library_tm1638 \
+      libs/tm1638
+
+GH에 프로젝트를 열고, 지금까지의 작업을 push 합니다:
+
+    $ git remote add origin https://github.com/you/awesome
+    $ git push origin -u master
+
+편집기로 awesome.ino를 열어 awesome을 구현하세요.
+
+* Project awesome continue. build & upload
+
+라이브러리 디렉터리를 지정해 빌드합니다.
+
+    $ EXTRA_LIB=libs scons upload
+
+현재까지의 작업으로 다음과 같은 디렉터리구조가 생겼습니다.
+
+    $ tree -d
+    .
+    ├── build
+    │   ├── core
+    │   └── lib_01
+    │       └── tm1638
+    └── libs
+        └── tm1638
+
+###############################################################################
+* Demo
+
+###############################################################################
+* References
+
+.link http://arduino.cc Arduino
+.link http://www.scons.org SCons
+.link http://pyserial.sourceforge.net/pyserial.html# pySerial
+
+* More links and books (kor)
+
+.image book_arduino_2.jpg
+.link http://www.make.co.kr/ MAKE:Korea
+.link http://www.insightbook.co.kr/books/making-insight Making Insight
+.link http://www.make.co.kr/?page_id=1487 Make Magazine (kor)
+
