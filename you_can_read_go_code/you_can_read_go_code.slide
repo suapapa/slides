@@ -1,0 +1,227 @@
+You can read Go code
+9 Mar 2013
+
+Homin Lee
+GDG Korea Golang
+@suapapa
+
+###############################################################################
+
+* About me
+
+.image site_github_com_suapapa.png 400 655
+
+- 주로 C/C++을 쓰며 Python을 서브로 사용해 왔습니다.
+- 본격적으로 고 언어를 쓰기 시작한 지는 6개월 쯤 되었습니다.
+
+* Goal
+
+- 고 언어의 존재를 알림 
+- 고 언어로 작성한 코드를 읽을 수 있게 함
+- 매력 포인트 발산
+- 고로 만든 프로젝트 자랑
+- 세계정복
+
+
+###############################################################################
+
+* Hello World
+
+* Hello Pororo
+
+C 계열 언어들과 닮은 친근한 문법
+
+.play hello-pororo.go
+
+
+* Hello Friends
+
+.code hello-friends.go /func printHelloTo/,/^}/
+
+.play hello-friends.go /func main/,/^}/
+
+낚인건가? 왜죠?
+
+* golang.org
+
+.image welcome_to_go.png 480 640
+
+###############################################################################
+
+* Go's declarations read left to right
+
+* Variable
+
+왼쪽에서 오른쪽으로 읽어 봅시다!
+
+    var x int
+    var y int
+
+- Variable x in int type. Variable y in int type.
+- 변수 x 는 int 타입. 변수 y 는 int 타입.
+
+같은 타입일때, 여러 줄의 변수 선언을 다음과 같이
+한 줄로 줄일 수 있습니다.
+
+    var x, y int
+
+- Variable x and y in int type.
+- 변수 x, y 는 int 타입.
+
+* Assign in gopher style
+
+다음과 같이 선언과 할당을 풀어 쓸 수도 있지만,
+
+    var ok bool
+    ok = true
+
+간편하게 `:=` 를 사용해 다음과 같이 줄일 수 있습니다.
+
+    ok := true
+
+아래에서 변수, numbers의 타입은;
+
+    numbers := []uint64{1, 2, 3, 5}
+
+[]uint64가 됩니다.
+
+
+* Function
+
+함수 역시 왼쪽에서 오른쪽으로 읽힙니다.
+
+.code hello-friends.go /func printHelloTo/,/^}/
+
+- Function printHelloTo recevied name in string.
+- 함수 printHelloTo 는 인자로, name을 string 타입으로 받음.
+
+반환값이 함수 선언의 뒤에 오는 것도 같은 이유 입니다.
+
+    func Sum(a, b int) int
+
+- Function Sum recevied a and b in int and return int
+- 함수 Sum은 인자로 a, b를 int 타입으로 받고, int 타입을 반환함.
+
+* For with range
+
+배열, 슬라이스, 스트링등은 range로 편하게 뽑아 쓸 수 있습니다.
+
+
+.play loop.go
+
+
+이제 고 코드를 읽을 준비가 다 되었습니다.
+
+
+###############################################################################
+* Working?
+
+.play hello-friends.go
+
+
+###############################################################################
+* Exercise
+
+* Exercise: Struct
+
+구조체(struct)역시 왼쪽에서 오른쪽으로 읽힙니다.
+
+    type Circle struct {
+        X, Y int // center
+        R uint // radius
+    }
+
+읽어보세요 :)
+
+* Exercise: Function
+
+복잡한 함수 선언의 경우 왼쪽에서 오른쪽으로 읽히는 특징은
+모호함을 줄여 줍니다.
+
+.code play-function.go /func getCb/,/^}/
+.code play-function.go /func calc/,/^}/
+.play play-function.go /func main/,/^}/
+
+읽어보세요 :)
+
+###############################################################################
+* Third-party packages
+
+* Godog.org
+
+공식 문서 사이트에서는 유명 소스 호스팅 사이트 들을 크롤링해
+써드파티 패키지들 까지 웹 문서를 제공합니다.
+
+.image site_godoc_org.png 400 655
+
+* Download third-party package
+
+.code hello-friends-fix.go /import/,/^\)/
+
+써드파티 패키지가 포함된 프로그램은 빌드전에 패키지들을
+다운로드 받아야 합니다.
+
+    $ go get
+
+패키지는 다음 위치에 다운 받아 집니다
+
+- $GOPATH/src/...	: Workspace 경로 밑
+- $GOROOT/src/pkg/...	: 고 설치 위치 밑 내장 패키지들이 있는 그 곳
+
+* Hello freind revisit
+
+.play hello-friends-fix.go /import/,/BEFORE_MAIN OMIT/
+
+###############################################################################
+* Is it fast?
+
+* Go vs ???
+
+.link http://benchmarksgame.alioth.debian.org/u64/benchmark.php?test=all&lang=go&lang2=java Computer Language Benchmarks Game
+
+
+###############################################################################
+* Go routine and channel
+
+* Live demo
+
+.image whac-a-gopher.png
+
+완성된 게임은 아래 Github에 있습니다.
+
+.link https://github.com/suapapa/whac-a-gopher
+
+###############################################################################
+* IMO
+
+###############################################################################
+* Googling with "golang"
+
+* golang.org
+
+Go is an open source programming environment
+that makes it easy to build simple, reliable, and efficient software.
+
+.image site_golang_org.png 400 655
+
+* A Tour of Go (한글)
+
+.link http://go-tour-kr.appspot.com/
+
+.image site_go-tour-kr_appspot_com.png 400 655
+
+* User group
+
+.link https://plus.google.com/communities/115721275599816202991 GDG Korea Golang (한국 고 언어 사용자 모임)
+
+
+
+# TODO: Add image
+
+* References
+
+.link http://golang.org/doc/articles/gos_declaration_syntax.html Go's Declaration Syntax
+.link http://golang.org/doc/effective_go.html Effecgive Go
+.link http://golang.org golang.org
+
+
